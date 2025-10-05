@@ -1,0 +1,30 @@
+FRONTEND DOCUMENTATION
+    document all what you've recently learned in here that is essential for this web project:
+
+Felix: in vite.config.js, inside the defineConfig({}) i added server and inside port i manually change the port of the front end to 3000
+    =>  server: {
+            port: 3000
+        }
+
+
+Felix: inside of the vite.config.js i added proxy so that frontend can interact to my backend server port which is the address of my backend is https://localhost:5000 and will start on empty forward slash '/'
+    =>  proxy: {
+            '/': 'https://localhost:5000'
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

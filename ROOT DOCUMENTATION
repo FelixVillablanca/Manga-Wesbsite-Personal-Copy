@@ -1,0 +1,13 @@
+FRONTEND TO BACKEND Integration
+
+for frontend to have an interaction to backend, I installed from the root directory (MangaWebSystem) 
+    => npm install concurrently --save-dev
+
+then i added inside of the package.json (MangaWebSystem/package.json)
+    => "dev": "concurrently \" npm run dev --prefix frontend\" \"npm run dev --prefix backend\""
+
+so that i can run both from frontend to backend localhost port
+    => (frontend run on https://localhost:3000 and backend run on https://localhost:5000)
+
+
+
