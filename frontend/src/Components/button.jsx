@@ -1,14 +1,19 @@
 
 import { useNavigate } from "react-router-dom";
 
+// import '../Styles/style.css'
+
 export default function ButtonNextPage() {
 
     const navigate = useNavigate();
 
     return(
         <>
-            <button onClick={() => navigate('/page1')} >next page</button>
+            <button onClick={() => navigate('/page1')} className="border border-red-500 rounded-sm" >next page</button>
         </>
     );
+
+
+
 }
 
