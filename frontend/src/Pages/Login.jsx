@@ -104,7 +104,7 @@ export default function Login() {
               type="submit"
               className="w-full py-2 px-4 bg-yellow-300 text-gray-800 font-semibold rounded-md hover:bg-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-300"
             >
-              Log Insd
+              Log In
             </button>
             <p className="text-sm text-white">
               Don’t have an account?{' '}
