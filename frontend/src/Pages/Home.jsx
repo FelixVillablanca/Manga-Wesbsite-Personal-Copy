@@ -61,7 +61,7 @@ export default function Home() {
                 htmlFor="email"
                 className="block text-xl font-medium text-white text-left"
               >
-                Emailed:
+                Email:
               </label>
               <input
                 type="email"
