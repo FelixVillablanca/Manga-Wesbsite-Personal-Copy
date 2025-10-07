@@ -1,32 +1,43 @@
-import { useState } from "react";
-import ButtonNextPage from "../Components/button";
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import '../Styles/style.css'; // Assuming this is the correct path
 
-
-import '../Styles/style.css'
-
-export default function Home() {
-    const [formData, setFormData] = useState({
+export default function Login() {
+  const [formData, setFormData] = useState({
     username: '',
-    email: '',
     password: '',
-    confirmPassword: '',
+    remember: false,
   });
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    const { name, value, type, checked } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: type === 'checkbox' ? checked : value,
+    }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (formData.password !== formData.confirmPassword) {
-      alert('Passwords do not match');
-      return;
+    try {
+      const response = await fetch('http://localhost:5000/api/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          username: formData.username,
+          password: formData.password,
+        }),
+      });
+      const data = await response.json();
+      console.log('Login response:', data);
+      // Handle successful login (e.g., store token, redirect)
+    } catch (error) {
+      console.error('Error logging in:', error);
     }
-    console.log('Form submitted:', formData);
   };
-    return(
-        <div className="flex items-center justify-center h-screen bg-gray-900">
+
+  return (
+    <div className="flex items-center justify-center h-screen bg-gray-900">
       <div>
         <h1 className="text-5xl font-bold mt-10 mb-6 text-center">
           <span className="text-white">MANGA</span>
@@ -36,7 +47,7 @@ export default function Home() {
           <form className="space-y-6" onSubmit={handleSubmit}>
             <div>
               <h1 className="text-4xl font-bold mb-10 text-white">
-                Create Your Account
+                Log In to Your Account
               </h1>
             </div>
             <div>
@@ -44,30 +55,13 @@ export default function Home() {
                 htmlFor="username"
                 className="block text-xl font-medium text-white text-left"
               >
-                Username:
+                Username or Email:
               </label>
               <input
                 type="text"
                 id="username"
                 name="username"
                 value={formData.username}
-                onChange={handleChange}
-                className="mt-1 w-full px-2 py-2 bg-gray-700 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-300"
-                required
-              />
-            </div>
-            <div>
-              <label
-                htmlFor="email"
-                className="block text-xl font-medium text-white text-left"
-              >
-                Email:
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value={formData.email}
                 onChange={handleChange}
                 className="mt-1 w-full px-2 py-2 bg-gray-700 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-300"
                 required
@@ -90,43 +84,40 @@ export default function Home() {
                 required
               />
             </div>
-            <div>
-              <label
-                htmlFor="confirm-password"
-                className="block text-xl font-medium text-white text-left"
-              >
-                Confirm Password:
-              </label>
+            <div className="flex items-center justify-start">
               <input
-                type="password"
-                id="confirm-password"
-                name="confirmPassword"
-                value={formData.confirmPassword}
+                type="checkbox"
+                id="remember"
+                name="remember"
+                checked={formData.remember}
                 onChange={handleChange}
-                className="mt-1 w-full px-2 py-2 bg-gray-700 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-300"
-                required
+                className="h-4 w-4 text-yellow-300 focus:ring-yellow-300 border-gray-300 rounded"
               />
+              <label
+                htmlFor="remember"
+                className="ml-2 text-sm text-white"
+              >
+                Remember me
+              </label>
             </div>
             <button
               type="submit"
               className="w-full py-2 px-4 bg-yellow-300 text-gray-800 font-semibold rounded-md hover:bg-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-300"
             >
-              Sign Up
+              Log In
             </button>
             <p className="text-sm text-white">
-              Already have an account?{' '}
-              <a
-                href="/login"
+              Don’t have an account?{' '}
+              <Link
+                to="/"
                 className="text-yellow-300 hover:underline"
               >
-                Log In
-              </a>
+                Sign Up
+              </Link>
             </p>
           </form>
         </div>
       </div>
     </div>
-    );
+  );
 }
-
-// widht: 20%;
