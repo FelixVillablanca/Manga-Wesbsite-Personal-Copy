@@ -22,7 +22,7 @@ const register_user = asyncHandler(async (req, res) => {
         res.status(201).json({"status" : true, "message" : "successfully registered."});
     }
 
-    
+
 
 
 })

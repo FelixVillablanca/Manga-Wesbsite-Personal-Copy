@@ -1,5 +1,5 @@
 
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 // import '../Styles/style.css'
 
@@ -10,6 +10,7 @@ export default function ButtonNextPage() {
     return(
         <>
             <button onClick={() => navigate('/page1')} className="border border-black-500 rounded-sm" >next page</button>
+            <Link to="/login">navigate to this /login from App.jsx</Link><Link/>
         </>
     );
 

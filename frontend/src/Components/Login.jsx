@@ -1,8 +1,11 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import '../Styles/style.css'; // Assuming this is the correct path
 
 export default function Login() {
+
+  const navigateTo = useNavigate()
+
   const [formData, setFormData] = useState({
     username: '',
     password: '',
@@ -109,7 +112,7 @@ export default function Login() {
             <p className="text-sm text-white">
               Don’t have an account?{' '}
               <Link
-                to="/"
+                to="/register" // recent '/'
                 className="text-yellow-300 hover:underline"
               >
                 Sign Up
