@@ -9,7 +9,7 @@ export default function ButtonNextPage() {
 
     return(
         <>
-            <button onClick={() => navigate('/page1')} className="border border-red-500 rounded-sm" >next page</button>
+            <button onClick={() => navigate('/page1')} className="border border-black-500 rounded-sm" >next page</button>
         </>
     );
 
