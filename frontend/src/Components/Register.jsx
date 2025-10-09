@@ -23,6 +23,35 @@ export default function Register() {
       return;
     }
     console.log('Form submitted:', formData);
+
+    try {
+      fetch('/api/createUser', {
+          method : 'POST',
+          body : JSON.stringify(formData),
+          headers : {
+            'Content-Type' : 'application/json'
+          }
+
+      })
+      .then(result => result.json())
+      .then(data => {
+        if (data.status) {
+          // alert(data.message)
+          setFormData({
+            username: '',
+            email: '',
+            password: '',
+            confirmPassword: '',
+          })
+          return
+        } 
+      })
+
+    }
+    catch(err) {
+      console.error(`Something went wrong while registering... ${err.message}`)
+    }
+  
   };
   
     return(

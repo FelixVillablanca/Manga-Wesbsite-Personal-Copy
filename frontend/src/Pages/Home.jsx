@@ -1,13 +1,29 @@
-import Login from '../Components/Login.jsx'
-
-import '../Styles/style.css'
+import { jwtDecode } from 'jwt-decode';
+import { useState, useEffect } from 'react';
 
 export default function Home() {
-  return(
-    <>
-      <Login />
-    </>
-  );
-}
+    const [userINFO, setUserINFO] = useState(null)
+    useEffect(() => {
+        const token = localStorage.getItem('userCredentials'); // Token
+        
+        if (token) {
 
-// widht: 20%;
+            //it gets the { id: checkUser._id, username: checkUser.username, email: checkUser.email }
+            const userCredentials = jwtDecode(token) 
+            setUserINFO(userCredentials)
+            
+        }
+    
+    },[])
+    
+    // console.log(userINFO);
+    return(
+        <>
+            <div>
+                <h1>Home after successfully logged in</h1>
+                {userINFO && (<h1>Example using the data from jwt {userINFO.username} </h1>) }
+                
+            </div>
+        </>
+    );
+}
