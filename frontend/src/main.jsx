@@ -6,7 +6,7 @@ import './Styles/style.css'
 
 
 //Import components
-import App from './App.jsx'
+import App from './Root_App_Routes.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

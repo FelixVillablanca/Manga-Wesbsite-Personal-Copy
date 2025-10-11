@@ -13,6 +13,7 @@ const { register_user, login} = require('../Controller/userController');
 router.post('/createUser', register_user);
 router.post('/login', login)
 // router.post('/login', verifyToken, login) //example of the token middleware i created
+// then to use, res.json({req.user.username}) //user is decoded in verifyToken function after jwt.verify()
 
 //routers with verifyToken after logging in
 

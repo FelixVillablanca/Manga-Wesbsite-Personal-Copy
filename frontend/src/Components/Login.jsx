@@ -36,13 +36,26 @@ export default function Login() {
       const data = await response.json();
 
       if (data.status) {
+        console.log(data)
 
         console.log(data.message)
 
-        localStorage.setItem("userCredentials", data.Token) //parsing the the credentials of the user from the database with token added
-        //and decoding it in /home so i can access the credentials of the user, and show it in UI
-        navigateTo('/home')
+        if (data.userRole == "1") { //for Admin
+          localStorage.setItem("AdminCredentials", data.Token)
+          navigateTo('/Admin')
+          return 
+        } 
+        
+        if (data.userRole == "2") { //for member
+          localStorage.setItem("userCredentials", data.Token) //parsing the the credentials of the user from the database with token added
+          //and decoding it in /home so i can access the credentials of the user, and show it in UI
+          navigateTo('/home')
+          return
+        }
       }
+
+      alert(data.message) //"user is not existing.."
+      return
 
       // Handle successful login (e.g., store token, redirect)
     } catch (error) {

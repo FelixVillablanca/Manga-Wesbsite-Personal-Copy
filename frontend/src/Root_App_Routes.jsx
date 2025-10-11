@@ -7,6 +7,7 @@ import Auth from './Pages/Auth.jsx'
 import Login from './Components/Login.jsx'
 import Register from './Components/Register.jsx';
 import Home from './Pages/Home.jsx'
+import Admin from './Pages/Admin.jsx';
 
 
 export default function App(){
@@ -16,7 +17,8 @@ export default function App(){
                 <Route path='/' element={<Auth />}/>
                 <Route path='/login' element={<Login />}/>
                 <Route path='/register' element={<Register />}/>
-                <Route path='/home' element={<Home />}></Route>
+                <Route path='/home' element={<Home />}/>
+                <Route path='/Admin' element={<Admin />}/>
             </Routes>
         </BrowserRouter> 
     );
