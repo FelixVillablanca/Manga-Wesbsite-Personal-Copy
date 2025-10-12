@@ -24,6 +24,11 @@ export default function Header({ onLogout }) {
                         <span className="material-symbols-outlined">search</span>
                     </button>
                 </div>
+
+                <button className=' hover:cursor-pointer flex absolute items-center justify-center right-14'>
+                    <span className="material-symbols-outlined text-amber-50 ">mode_night</span>
+                </button>
+                
                 <button onClick={() => handleSideToggle()} className='bg-white flex justify-center items-center rounded absolute right-5 hover:bg-amber-300 cursor-pointer'>
                     <span class="material-symbols-outlined">menu</span>
                 </button>

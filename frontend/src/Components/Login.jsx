@@ -42,7 +42,7 @@ export default function Login() {
 
         if (data.userRole == "1") { //for Admin
           localStorage.setItem("AdminCredentials", data.Token)
-          navigateTo('/Admin')
+          navigateTo('/AdminPanel')
           return 
         } 
         
