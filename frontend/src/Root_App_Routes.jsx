@@ -8,6 +8,10 @@ import Login from './Components/Login.jsx'
 import Register from './Components/Register.jsx';
 import Home from './Pages/Home.jsx'
 import AdminPanel from './Pages/AdminPanel.jsx'
+import Add_Manga from './Pages/Add_Manga.jsx';
+import Edit_Manga from './Pages/Edit_Manga.jsx';
+import ViewManga from './Pages/ViewManga.jsx';
+import SelectedChapterToView from './Pages/SelectedChapterToVIew.jsx';
 
 export default function App(){
     return(
@@ -18,6 +22,10 @@ export default function App(){
                 <Route path='/register' element={<Register />}/>
                 <Route path='/home' element={<Home />}/>
                 <Route path='/AdminPanel' element={<AdminPanel />}/>
+                <Route path='/Add_Manga' element={<Add_Manga />}></Route>
+                <Route path='/edit-manga/:id' element={<Edit_Manga />}></Route>
+                <Route path='/view-manga/:id' element={<ViewManga />}></Route>
+                <Route path={'/SelectedChapter_ToBeView/:manga_id/:chapter_id/:indexChapter'} element={<SelectedChapterToView />}></Route>
             </Routes>
         </BrowserRouter> 
     );

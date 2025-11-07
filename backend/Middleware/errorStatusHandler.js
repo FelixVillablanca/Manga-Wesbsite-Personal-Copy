@@ -40,6 +40,10 @@ const errorStatusChecker = (err, req, res, next) => {
                 stackTrace : err.stack
             })
             break;
+        default:
+            console.log(err);
+            res.json({ title: "Error", message: err.message, stackTrace: err.stack });
+            break;
     }
 }
 

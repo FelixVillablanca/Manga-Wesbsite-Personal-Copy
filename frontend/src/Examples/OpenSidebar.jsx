@@ -1,5 +1,5 @@
 
-import Sidebar from "./Sidebar"
+import Sidebar from "../Components/Sidebar"
 export default function OpenSidebar({ statusSidebar, sidebarToggle }) {
     return(
         <>
