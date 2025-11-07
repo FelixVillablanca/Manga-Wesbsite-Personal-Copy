@@ -190,6 +190,7 @@ export default function ViewManga() {
             // alert(response.message)
             console.log('Failed Message: ', response.message)
         }
+        window.location.reload();
         console.log('Successfull message: ', response.message)
         
     }
@@ -227,7 +228,7 @@ export default function ViewManga() {
                         </label>
                         <div className={`grid grid-cols-6 gap-4 ${chapterSelectorDiv ? 'max-h-[200px]' : 'hidden overflow-hidden p-0'}  w-full transition-all duration-300 rounded p-3 overflow-auto bg-[#2f3136]`}>
                             {chaptersIDFK.length > 0 && chaptersIDFK.map((chapters, index) => 
-                                <Link className={`${index === chapterTracker + 1? 'border border-amber-400' : 'border-none'} rounded p-2 cursor-pointer bg-gray-950 text-center`} 
+                                <Link className={`${index === chapterTracker - 1? 'border border-amber-400' : 'border-none'} rounded p-2 cursor-pointer bg-gray-950 text-center`} 
                                     key={index} 
                                     to={`/SelectedChapter_ToBeView/${chapters.manga_idfk}/${chapters._id}/${index}`}
                                     // /SelectedChapter_ToBeView/:manga_id/:chapter_id/:indexOFchapter
