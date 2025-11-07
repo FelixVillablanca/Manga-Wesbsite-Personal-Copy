@@ -86,49 +86,23 @@ export default function SelectedChapterToVIew() {
         // console.log('Chapter index: ', chapter_index) 
 
         useEffect(() => {
-            
             const get_the_data_on_Chapters_idfk = async () => {
                 try {
-                    fetch(`/api/view_chapter_selected/${manga_id}`, {
-                        method : 'GET'
-                    })
-                    .then(response => response.json())
-                    .then(dataResponse => {
-                        
-                            try {
-                                if (dataResponse) {
-                                    for(const chapters in dataResponse.Chapters_idfk) {
-                                        if (chapters?.length > 0) {
-                                            setChaptersIDFK(dataResponse.Chapters_idfk)
-                                            setFilesImages(dataResponse.Chapters_idfk[chapter_index].images)
-                                            // window.location.reload();
-                                        }
-                                    }
-                                }
-                                        
-                            } catch (error) {
-                                console.error('From Frontend error: ', error)
-                            }
-                    })
-                    
-                    // const result = await fetch(`/api/view_chapter_selected/${manga_id}`)
-                    // const response = await result.json();
+                    const response = await fetch(`/api/view_chapter_selected/${manga_id}`);
+                    const dataResponse = await response.json();
 
-                    // if (response) {
-                    //     console.log(response.Chapters_idfk[chapter_index])
-                    //     // for(const chapters in response.Chapters_idfk) {
-                    //     //     if (chapters?.length > 0) {
-                    //             setFilesImages(response.Chapters_idfk[chapter_index].images)
-                    //         // }
-                    //     // }
-                    // }
+                    if (dataResponse && Array.isArray(dataResponse.Chapters_idfk) && dataResponse.Chapters_idfk.length > 0) {
+                        setChaptersIDFK(dataResponse.Chapters_idfk);
+                        if (dataResponse.Chapters_idfk[chapter_index]) {
+                            setFilesImages(dataResponse.Chapters_idfk[chapter_index].images);
+                        }
+                    }
                 } catch (error) {
-                    console.error('Failure on fetching: ', error)
+                    console.error('Failure on fetching: ', error);
                 }
-            }
-            get_the_data_on_Chapters_idfk()
-
-        },[manga_id, chapter_index])
+            };
+            get_the_data_on_Chapters_idfk();
+        }, [manga_id, chapter_index]);
         
         console.log('Images fetched: ', filesImages)
         console.log('Chapters fetched: ', chaptersIDFK)
@@ -426,7 +400,7 @@ export default function SelectedChapterToVIew() {
                         <div className={`relative transition-all duration-300 p-2 ${filesAdded.length > 0 ? 'w-[50%]' : 'w-full'}  h-full `}> {/*w-full w-[50%]*/}
                             <div {...getRootProps()} className={`bg-gray-800  hover:bg-gray-700 transition-colors duration-200 border-2 border-dashed border-amber-400 rounded-lg p-6 flex flex-col items-center justify-center cursor-pointer w-full duration-300 ${filesAdded.length > 0 ? 'h-[50%]': 'h-full'} `}> {/* h-[full] h-[50%] */}
                                 <input {...getInputProps()} />
-                                <h1 className="text-amber-400 text-lg font-semibold mb-2">Upload Story for new chapter {chapter_index + 2}</h1>
+                                <h1 className="text-amber-400 text-lg font-semibold mb-2">Upload Story for new chapter </h1> {/* {chapter_index + 1} to be fix */}
                                 <p className="text-gray-400 text-sm text-center">{isDragActive ? "Drop the files now..." : "Drag and drop image here, or click to select"}</p>
                             </div>
                             {filesAdded.length > 0 &&(

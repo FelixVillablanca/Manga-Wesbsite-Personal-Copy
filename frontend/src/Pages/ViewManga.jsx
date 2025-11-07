@@ -43,6 +43,7 @@ export default function ViewManga() {
     const [chaptersIDFK, setChaptersIDFK] = useState([])
     const [filesImages, setFilesImages] = useState([])
     const [chapterTracker, setChapterTracker] = useState(0)
+    const [overAllRoundOF_Chapters, setOverAllRoundOF_Chapters] = useState(0);
     // const [allTracker_chapter, setAllTracker_Chapter] = useState([])
     
     useEffect(() => {
@@ -55,6 +56,7 @@ export default function ViewManga() {
                     if (Chapters?.length > 0) {
                         // setAllTracker_Chapter(Chapters)
                             setChaptersIDFK(response.Chapters_idfk)
+                            // setOverAllRoundOF_Chapters(response.Chapters_idfk?.length)
                             setFilesImages(response.Chapters_idfk[0].images)
                             setChapterTracker(1)
                     }
@@ -269,7 +271,7 @@ export default function ViewManga() {
                         <div className={`relative transition-all duration-300 p-2 ${filesAdded.length > 0 ? 'w-[50%]' : 'w-full'}  h-full `}> {/*w-full w-[50%]*/}
                             <div {...getRootProps()} className={`bg-gray-700  hover:bg-gray-800 transition-colors duration-200 border-2 border-dashed border-amber-400 rounded-lg p-6 flex flex-col items-center justify-center cursor-pointer w-full duration-300 ${filesAdded.length > 0 ? 'h-[50%]': 'h-full'} `}> {/* h-[full] h-[50%] */}
                                 <input {...getInputProps()} />
-                                <h1 className="text-amber-400 text-lg font-semibold mb-2">Add Story for Chapter {chapterTracker}</h1>
+                                <h1 className="text-amber-400 text-lg font-semibold mb-2">Add Story for hew Chapter </h1> {/* {chapterTracker + 1} to be fixed */}
                                 <p className="text-gray-400 text-sm text-center">{isDragActive ? "Drop the files now..." : "Drag and drop image here, or click to select"}</p>
                             </div>
                             {filesAdded.length > 0 &&(
@@ -336,7 +338,7 @@ export default function ViewManga() {
                         <div className={`relative transition-all duration-300 p-2 ${filesAdded.length > 0 ? 'w-[50%]' : 'w-full'}  h-full `}> {/*w-full w-[50%]*/}
                             <div {...getRootProps()} className={`bg-gray-700  hover:bg-gray-800 transition-colors duration-200 border-2 border-dashed border-amber-400 rounded-lg p-6 flex flex-col items-center justify-center cursor-pointer w-full duration-300 ${filesAdded.length > 0 ? 'h-[50%]': 'h-full'} `}> {/* h-[full] h-[50%] */}
                                 <input {...getInputProps()} />
-                                <h1 className="text-amber-400 text-lg font-semibold mb-2">Upload Story for Chapter {chapterTracker + 1}</h1>
+                                <h1 className="text-amber-400 text-lg font-semibold mb-2">Upload Story for Chapter {chapterTracker + 1}</h1> 
                                 <p className="text-gray-400 text-sm text-center">{isDragActive ? "Drop the files now..." : "Drag and drop image here, or click to select"}</p>
                             </div>
                             {filesAdded.length > 0 &&(
