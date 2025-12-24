@@ -47,7 +47,7 @@ export default function Login() {
         } 
         
         if (data.userRole == "2") { //for member
-          localStorage.setItem("userCredentials", data.Token) //parsing the the credentials of the user from the database with token added
+          localStorage.setItem("Reader_Credentials", data.Token) //parsing the the credentials of the user from the database with token added
           //and decoding it in /home so i can access the credentials of the user, and show it in UI
           navigateTo('/home')
           return

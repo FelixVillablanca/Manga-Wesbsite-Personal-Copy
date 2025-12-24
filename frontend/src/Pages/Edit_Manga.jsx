@@ -23,7 +23,7 @@ export default function Edit_Manga() {
     
     const [statusCheckbox, setStatusCheckbox] = useState('');
     const [Published, setPublished] = useState('Unpublished');
-    const [Author, setAuthor] = useState('Anonymous Author');
+    const [Author, setAuthor] = useState('Anonymous');
 
     const [files, setFiles] = useState([]); 
     const [zoomLevels, setZoomLevels] = useState({});
@@ -52,7 +52,7 @@ export default function Edit_Manga() {
     useEffect(() => {
         const fetchManga = async () => {
             try {
-                const response = await fetch(`/api/get_manga/${id}`);
+                const response = await fetch(`/api/admin_getManga/${id}`);
                 const data = await response.json();
                 console.log('data', data)
                 // console.log('data 2', data.Chapters_idfk[0].images.map(file => 'haha'))
@@ -102,7 +102,7 @@ export default function Edit_Manga() {
 
     const handlePublished_Status = (event) => event.target.checked ? setPublished(event.target.value) : setPublished('Unpublished');
 
-    const handleAuthor_checkbox = (event) => setAuthor(event.target.checked ? Admin.username : "Anonymous Author");
+    const handleAuthor_checkbox = (event) => setAuthor(event.target.checked ? Admin.username : "Anonymous");
 
     const handleRemove = (nameToRemove) => {
         const newFiles = files.filter(file => file.name !== nameToRemove);
@@ -201,7 +201,7 @@ export default function Edit_Manga() {
         slidesToShow: 1,
         slidesToScroll: 1,
         };
-
+        console.log('manga: ', manga)
     if (!manga) {
         return <div className="w-full h-screen flex items-center justify-center"><BeatLoader color="#ffffff" /></div>;
     }

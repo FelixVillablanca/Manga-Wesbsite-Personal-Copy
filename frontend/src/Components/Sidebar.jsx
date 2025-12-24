@@ -79,11 +79,11 @@ export default function Sidebar({ Admin, adminSet}) {
                         </div> */}
                     </div>
 
-                    <div className='w-full p-[5px]'>
+                    {/* <div className='w-full p-[5px]'>
                         <Link to='' onClick={() => alert('clicked')}>
                             <span>User Management</span>
                         </Link>
-                    </div>    
+                    </div>     */}
                     <div className='w-full p-[5px]  absolute bottom-3 '>
                         <Link to='' onClick={handleLogout} className='flex items-center gap-1'>
                             <span className="material-symbols-outlined ">logout</span>

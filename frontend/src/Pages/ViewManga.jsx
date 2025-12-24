@@ -175,20 +175,26 @@ export default function ViewManga() {
 
     }
 
+    
     const Upload_Added_Chapter = async (id) => {
         // console.log('upload added chapter id: ', id)
         const formdata = new FormData();
-
+        
         filesAdded.forEach(file => formdata.append('newChapter_images', file.file))
         // console.log('formdata: ', formdata)
         const result = await fetch(`/api/Added_newChapter/${id}`, {
             method : "POST",
             body : formdata
         })
-
+        
         const response = await result.json();
-
+        
         if (!response) {
+            useEffect(() => {
+                if (response) {
+                    window.location.reload()
+                }
+            },[response])
             // alert(response.message)
             console.log('Failed Message: ', response.message)
         }
@@ -239,16 +245,6 @@ export default function ViewManga() {
                                     {/* <span className="loading loading-spinner text-primary"></span> */}
                                 </Link>
                             )}
-
-
-
-                        
-                            {/* <button className="border rounded p-2 cursor-pointer bg-gray-950">
-                                2
-                            </button>
-                            <button className="border rounded p-2 cursor-pointer bg-gray-950">
-                                3
-                            </button>*/}
                         </div>
                         <div className=" bottom-10 flex flex-row items-center gap-4 ">
                             <span className="">

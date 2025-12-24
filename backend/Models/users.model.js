@@ -18,6 +18,15 @@ const UsersSchema = mongoose.Schema({
         role : {
             type : Number,
             required : true,
+        },
+        image : {
+            type : String,
+            required : false,
+        },
+        User_Activities_idfk : {
+            type : mongoose.Schema.Types.ObjectId, // id from the user_Activities.model.js,
+            ref : 'User_Activitie',
+            required : false,
         }
     },{
         timestamps : true,

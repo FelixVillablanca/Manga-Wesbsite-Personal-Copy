@@ -25,16 +25,26 @@ const MangaSchema = mongoose.Schema({
             type : String,
             require : true
         },
-        Published : { // new 
+        Published : { 
             type : String,
             require : true,
             default : "Unpublished"
         },
-        Author : {  // new
+        Author : {  
             type : String,
             require : false,
             default : "Anonymous Author"
         },
+        UserInteracted : [{ // For tracking the number of viewers of that specific manga
+            type : mongoose.Schema.Types.ObjectId, // An array of the id of the users who viewed to this specific manga
+            required : false,
+        }],
+        UsersLiked : [{
+            type : mongoose.Schema.Types.ObjectId,
+            ref : "User",
+            required : false,
+        }]
+
     }, {
         timestamps : true
     }

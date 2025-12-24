@@ -37,12 +37,8 @@ export default function Register() {
       .then(data => {
         if (data.status) {
           // alert(data.message)
-          setFormData({
-            username: '',
-            email: '',
-            password: '',
-            confirmPassword: '',
-          })
+          setFormData({ username: '', email: '', password: '', confirmPassword: '', })
+          console.log(data.message)
           return
         } 
       })
